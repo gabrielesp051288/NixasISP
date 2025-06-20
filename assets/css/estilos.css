@@ -1,0 +1,442 @@
+/* /assets/css/estilos.css (Versión 2 - Header Azul) */
+
+/* --- Variables de Color (Paleta Azul Pastel) --- */
+:root {
+    --color-header-fondo: #4a76a8; /* Un azul más sólido pero tranquilo para el fondo del header */
+    --color-header-texto: #ffffff;
+    --color-primario-accion: #5D9CEC; /* Azul para botones y enlaces de acción */
+    --color-fondo: #f4f7f9;
+    --color-texto: #333333;
+    --color-texto-claro: #6c7a89;
+    --color-blanco: #ffffff;
+    --color-borde: #dfe4e7;
+    --color-exito: #4CAF50;
+    --color-error: #F44336;
+    --color-logout: #ffdddd; /* Un rojo muy claro para que sea visible sobre el azul */
+}
+
+/* --- Estilos Generales --- */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    margin: 0;
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+}
+
+.container {
+    padding: 20px 30px;
+}
+
+h1 {
+    /* El título principal ahora es oscuro para un look más limpio */
+    color: var(--color-texto);
+    border-bottom: 2px solid var(--color-borde);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+h2 {
+    color: var(--color-texto);
+    margin-top: 0;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+    font-size: 1.2em;
+}
+
+a {
+    text-decoration: none;
+    color: var(--color-primario-accion); /* Los enlaces dentro del contenido seguirán siendo azules */
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid var(--color-borde);
+    margin: 25px 0;
+}
+
+/* --- Navegación (Header) --- */
+nav {
+    background-color: var(--color-header-fondo); /* Fondo azul */
+    padding: 15px 30px;
+    font-size: 1.1em;
+    display: flex; /* Para alinear mejor los items */
+    align-items: center;
+}
+
+nav a {
+    color: var(--color-header-texto);
+    padding: 0 15px; /* Añade espaciado interno a cada lado del texto */
+    font-weight: 500;
+    transition: color 0.2s;
+    white-space: nowrap; /* Evita que los enlaces se partan en dos líneas */
+}
+
+nav a:not(:first-child)::before {
+    content: '|'; /* Inserta el separador antes de cada enlace, excepto el primero */
+    margin-right: 15px; /* Espacio entre el separador y el texto del enlace */
+    color: rgba(255, 255, 255, 0.4); /* Color del separador, un blanco semitransparente */
+}
+
+nav a:hover {
+    color: #cceeff; /* Un celeste claro al pasar el mouse */
+    text-decoration: none;
+}
+
+/* Estilo especial para el enlace de "Cerrar Sesión" */
+nav a[href*="logout"] {
+    color: var(--color-logout) !important; /* Rojo claro para que resalte */
+    margin-left: auto; /* Empuja este enlace hasta el final a la derecha */
+    margin-right: 0;
+}
+
+/* --- Estilo de Bloques (Dashboard) --- */
+.dashboard-block {
+    background-color: var(--color-blanco);
+    border: 1px solid var(--color-borde);
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.04);
+}
+
+/* --- Tablas --- */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    border-bottom: 1px solid var(--color-borde);
+    padding: 12px 8px;
+    text-align: left;
+    vertical-align: middle;
+    font-size: 0.95em;
+}
+
+th {
+    font-weight: 600;
+    background-color: var(--color-fondo);
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+/* --- Formularios y Botones --- */
+form label {
+    font-weight: 600;
+    display: inline-block;
+    margin-bottom: 5px;
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="password"],
+form input[type="number"],
+form input[type="date"],
+form input[type="datetime-local"],
+form select,
+form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--color-borde);
+    border-radius: 5px;
+    box-sizing: border-box;
+    margin-bottom: 15px;
+    color: var(--color-texto);
+}
+
+form button[type="submit"] {
+    background-color: var(--color-primario-accion); /* Botones de acción con el azul más vivo */
+    color: var(--color-blanco);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+form button[type="submit"]:hover {
+    background-color: #4a88d7;
+}
+/* --- Estilos de Consola para Logs --- */
+.log-output {
+    background-color: #000000; /* Fondo negro */
+    color: #4AF626; /* Verde fosforescente tipo consola */
+    font-family: 'Consolas', 'Courier New', monospace; /* Fuente de ancho fijo */
+    padding: 15px;
+    border-radius: 5px;
+    white-space: pre-wrap;   /* Mantiene los saltos de línea y espacios del texto original */
+    word-wrap: break-word;     /* Evita que las líneas largas se desborden del bloque */
+    font-size: 0.9em;        /* Un tamaño de letra ligeramente más pequeño */
+    border: 1px solid #333;  /* Un borde sutil */
+
+    /* --- LÍNEAS AÑADIDAS --- */
+    max-height: 400px;  /* Altura máxima del bloque en píxeles */
+    overflow-y: auto;   /* Añade una barra de scroll vertical SÓLO si el contenido es más largo */
+}
+/* --- Estilos para la Página de Login --- */
+.login-container {
+    width: 100%;
+    max-width: 400px;
+    margin: 100px auto; /* Centra el bloque vertical y horizontalmente */
+    padding: 30px;
+    background-color: var(--color-blanco);
+    border: 1px solid var(--color-borde);
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+.login-container h1 {
+    text-align: center;
+    border-bottom: none;
+    margin-bottom: 25px;
+}
+
+/* --- Estilos para la Vista de Factura Individual --- */
+.invoice-box {
+    background-color: var(--color-blanco);
+    border: 1px solid var(--color-borde);
+    padding: 30px;
+    max-width: 800px; /* Ancho máximo para la factura */
+    margin: 20px auto; /* Centra la caja de la factura */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.04);
+}
+.invoice-box h2, .invoice-box h3 {
+    border-bottom: 1px solid var(--color-borde);
+    padding-bottom: 8px;
+    margin-bottom: 15px;
+}
+.invoice-box table tfoot {
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+/* --- Estilos para Layout de Reportes de 2 Columnas --- */
+.report-layout {
+    display: flex;
+    flex-wrap: wrap; /* Permite que los bloques se pongan uno debajo del otro en pantallas pequeñas */
+    gap: 30px;       /* Espacio entre las columnas */
+}
+
+.chart-container {
+    flex: 2; /* El gráfico tomará el doble de espacio que la tabla */
+    min-width: 300px; /* Ancho mínimo para evitar que se aplaste demasiado */
+}
+
+.table-container {
+    flex: 1; /* La tabla tomará la mitad del espacio que el gráfico */
+    min-width: 300px;
+}
+
+/* Un contenedor para el canvas para controlar su tamaño máximo */
+.chart-wrapper {
+    position: relative;
+    max-height: 450px; /* Altura máxima para que el gráfico no sea "gigante" */
+    margin: auto;
+}
+
+/* --- Estilos para la Paginación --- */
+.pagination {
+    display: flex;
+    justify-content: center;
+    padding-left: 0;
+    list-style: none;
+    margin-top: 30px;
+}
+.pagination li a {
+    color: var(--color-primario-accion);
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background-color .3s;
+    border: 1px solid var(--color-borde);
+    margin: 0 4px;
+    border-radius: 4px;
+}
+.pagination li.active a {
+    background-color: var(--color-primario-accion);
+    color: white;
+    border-color: var(--color-primario-accion);
+}
+.pagination li a:hover:not(.active) {
+    background-color: #ddd;
+}
+.pagination li.disabled a {
+    color: #ccc;
+    pointer-events: none;
+    cursor: default;
+}
+
+/* --- Estilos para Estados de Filas en Tablas --- */
+tr.estado-vencida td {
+    background-color: #ffe6e6 !important; /* Un rojo pastel muy claro */
+    color: #a30000 !important; /* Texto rojo oscuro para contraste */
+    font-weight: bold;
+}
+tr.estado-vencida a {
+    color: #c00 !important;
+}
+
+tr.estado-pagada td {
+    background-color: #f8f9fa !important; /* Un gris muy claro de fondo */
+    color: #6c757d !important; /* Texto gris */
+}
+
+/* --- Estilos para Tarjetas de Resumen del Dashboard --- */
+.summary-card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Espacio entre las tarjetas */
+    margin-bottom: 25px;
+}
+.summary-card {
+    flex: 1; /* Hace que todas las tarjetas intenten tener el mismo tamaño */
+    min-width: 220px; /* Ancho mínimo antes de que pasen a la siguiente línea */
+    background-color: var(--color-blanco);
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid var(--color-borde);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.04);
+    text-align: left; /* Alineamos a la izquierda para un look más limpio */
+}
+.summary-card .card-title {
+    font-size: 0.9em;
+    font-weight: 600;
+    color: var(--color-texto-claro);
+    margin: 0 0 10px 0;
+    text-transform: uppercase;
+}
+.summary-card .card-number {
+    font-size: 2.2em;
+    font-weight: bold;
+    color: var(--color-texto); /* Color de texto principal */
+    margin: 0;
+}
+/* Estilo especial para la tarjeta de "Cobrado" */
+.summary-card.cobrado .card-number {
+    color: var(--color-exito); /* Verde para el dinero que ingresó */
+}
+
+/* --- Estilos para Bloques Desplegables (Collapsible) --- */
+.collapsible-header {
+    cursor: pointer; /* Cambia el cursor a una mano para indicar que es clickeable */
+    user-select: none; /* Evita que el texto del título se seleccione al hacer clic */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Flecha indicadora */
+.collapsible-header::after {
+    content: '▲'; /* Flecha hacia arriba (contenido visible) */
+    font-size: 0.8em;
+    color: var(--color-texto-claro);
+    transition: transform 0.2s ease-in-out;
+}
+
+/* Cuando el contenido está oculto, la flecha rota */
+.collapsible-header.collapsed::after {
+    transform: rotate(180deg); /* Flecha hacia abajo */
+}
+
+/* Clase para ocultar el contenido */
+.is-hidden {
+    display: none;
+}
+
+/* --- Estilos para la Página de Configuración con Menú Lateral --- */
+.settings-layout {
+    display: flex;
+    gap: 30px; /* Espacio entre el menú y el contenido */
+    align-items: flex-start;
+}
+
+.settings-menu {
+    flex: 0 0 220px; /* El menú no crece, no se encoge, y tiene 220px de ancho */
+    background-color: var(--color-blanco);
+    border-radius: 8px;
+    padding: 10px;
+    border: 1px solid var(--color-borde);
+}
+
+.settings-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.settings-menu ul li a {
+    display: block;
+    padding: 12px 15px;
+    border-radius: 5px;
+    color: var(--color-texto);
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.settings-menu ul li a:hover {
+    background-color: var(--color-fondo);
+}
+
+.settings-menu ul li a.active {
+    background-color: var(--color-primario-accion);
+    color: var(--color-blanco);
+}
+
+.settings-content {
+    flex: 1; /* El contenido toma todo el espacio restante */
+}
+
+/* --- Estilos para Botones de Acción en Tablas --- */
+.action-btn {
+    display: inline-block;
+    padding: 5px 10px;
+    font-size: 0.85em;
+    font-weight: 500;
+    text-align: center;
+    border-radius: 4px;
+    text-decoration: none;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    margin: 2px;
+    color: white !important; /* Hacemos el texto siempre blanco */
+}
+.action-btn:hover {
+    text-decoration: none;
+    opacity: 0.85;
+}
+
+/* Botón Primario (Azul principal de acciones) */
+.btn-primary {
+    background-color: var(--color-primario-accion);
+    border-color: var(--color-primario-accion);
+}
+
+/* Botón Secundario (gris neutro para acciones como Editar o Ver) */
+.btn-secondary {
+    background-color: #6c757d;
+    border-color: #6c757d;
+}
+
+/* Botón de Éxito (ej: Registrar Pago) */
+.btn-success {
+    background-color: var(--color-exito); /* Verde */
+    border-color: var(--color-exito);
+}
+
+/* Botón de Peligro (ej: Borrar, Cancelar) */
+.btn-danger {
+    background-color: var(--color-error); /* Rojo */
+    border-color: var(--color-error);
+}
+
+/* Hacemos que los botones dentro de formularios también tomen este estilo */
+td form button.action-btn {
+    font-family: inherit;
+    color: white !important;
+}
